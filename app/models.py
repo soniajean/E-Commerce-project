@@ -28,16 +28,19 @@ class User(db.Model, UserMixin):
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
+    price = db.Column(db.String)
+    description = db.Column(db.String)
+    category = db.Column(db.String)
     img_url = db.Column(db.String)
-    body = db.Column(db.String)
-    date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
  
 
-    def __init__(self, title, img_url, body, user_id):
+    def __init__(self, title, price, description, category, img_url, user_id):
         self.title = title
+        self.price = price
+        self.description = description
+        self.category = category
         self.img_url = img_url
-        self.body = body
         self.user_id = user_id
 
     def saveProduct(self):
@@ -57,12 +60,12 @@ class Product(db.Model):
 
     def to_dict(self):
         return {
-            'title' : self.title,
             'id' : self.id,
-            'img_url' : self.img_url,
-            'body' : self.body,
-            'date_created' : self.date_created,
-            'user_id' : self.user_id,
+            'title' : self.title,
+            'price' : self.price,
+            'description' : self.description,
+            'category' : self.category,
+            'img_url' : self.img_url,           
             'item' : self.item.username
 
         }
