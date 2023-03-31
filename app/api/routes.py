@@ -3,10 +3,9 @@ from ..models import Product
 
 api = Blueprint('api', __name__, url_prefix='/api')
 
-auth = Blueprint('auth', __name__, template_folder='auth_templates')
 
 
-@auth.get('/product')
+@api.get('/product')
 def getProduct():
     product = Product.query.all()
     productlist = [p.to_dict() for p in product]
@@ -15,7 +14,7 @@ def getProduct():
         'data': productlist
     }
 
-@auth.get('/product/<int:product_id>')
+@api.get('/product/<int:product_id>')
 def getSingleProduct(product_id):
     p = Product.query.get(product_id)
     if p:
@@ -29,7 +28,7 @@ def getSingleProduct(product_id):
         'message' : 'That product is not available!!'
     }
 
-@auth.post('/createproduct')
+@api.post('/createproduct')
 def createProductAPI():
     data = request.json # This coming from the POST request body
 
@@ -47,7 +46,7 @@ def createProductAPI():
         'message' : 'new product has been created!'
     }
 
-@auth.get('/product/item/<int:user_id>')
+@api.get('/product/item/<int:user_id>')
 def getPostsByUser(user_id):
     product = Product.query.filter(Product.user_id == user_id).all()
     # Just so we can see the other example of the same query above:
