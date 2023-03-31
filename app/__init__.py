@@ -10,7 +10,7 @@ from .models import db, User
 from flask_migrate import Migrate
 from flask_login import LoginManager
 
-
+#hello
 app = Flask(__name__)
 
 login = LoginManager()
