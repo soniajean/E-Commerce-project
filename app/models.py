@@ -13,6 +13,7 @@ cart = db.Table(
 #  
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
+    product_id = db.Column(db.Integer)
     first_name = db.Column(db.String(50), nullable=False, )
     last_name = db.Column(db.String(50), nullable=False, )
     username = db.Column(db.String, nullable=False, unique=True)
