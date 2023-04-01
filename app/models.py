@@ -9,6 +9,7 @@ cart = db.Table(
     db.Column('user_id', db.Integer, db.ForeignKey('user_id'), nullable=False),
     db.Column('product_id', db.Integer, db.ForeignKey('product_id'), nullable=False)
 )
+
 # may need to change product_id name
 #  
 class User(db.Model, UserMixin):
@@ -19,7 +20,6 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String, nullable=False, unique=True)
     email = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, nullable=False, )
-
 
     def __init__(self, first_name, last_name, username, email, password):
         self.first_name = first_name
