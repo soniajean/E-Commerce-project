@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='clutch_logo_primary.svg')}}" alt="logo"
+    <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='dora backpack.webp')}}" alt="logo"
         width="100"> </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ url_for('auth.registerPage') }}">register</a>
+          <a class="nav-link active" aria-current="page" href="{{ url_for('auth.registerPage') }}">Register</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('auth.loginPage') }}">Login</a>
@@ -20,7 +20,7 @@
             Dropdown
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="{{ url_for 'cart.allProducts'}}">Shop</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li>
               <hr class="dropdown-divider">
