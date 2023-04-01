@@ -9,16 +9,18 @@ cart = db.Table(
     db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
     db.Column('product_id', db.Integer, db.ForeignKey('product.id'), nullable=False)
 )
+
 # may need to change product_id name
 #  
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
+    product_id = db.Column(db.Integer)
     first_name = db.Column(db.String(50), nullable=False, )
     last_name = db.Column(db.String(50), nullable=False, )
     username = db.Column(db.String, nullable=False, unique=True)
     email = db.Column(db.String, nullable=False, unique=True)
     password = db.Column(db.String, nullable=False, )
-
+    
   
  
 
@@ -41,7 +43,7 @@ class Product(db.Model):
     category = db.Column(db.String)
     img_url = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    cart = db.relationship('User',
+    carted = db.relationship('User',
         secondary = 'cart',
         backref = 'carted',
         lazy = 'dynamic'
