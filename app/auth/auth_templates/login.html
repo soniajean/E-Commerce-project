@@ -8,7 +8,11 @@
             {{ form.username(class='form-control', placeholder='Username') }}
             {{ form.password(class='form-control', placeholder='Password') }}
             {{ form.submit(class='btn btn-primary', placeholder='Submit') }}
+            <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-primary" type="button">Submit</button>
+                <button class="btn btn-primary" type="button">Forgot Password?</button>
+              </div>
         </form>
      </div>
 </div>
-{% endblock %
+{% endblock %}
