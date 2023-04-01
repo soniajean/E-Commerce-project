@@ -36,11 +36,10 @@ class User(db.Model, UserMixin):
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False, unique=True )
-    price = db.Column(db.String)
+    price = db.Column(db.Numeric(10,2))
     description = db.Column(db.String)
     category = db.Column(db.String)
     img_url = db.Column(db.String)
-    product_inventory = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     cart = db.relationship('User',
         secondary = 'cart',
@@ -49,14 +48,12 @@ class Product(db.Model):
     )
 
 
-    def __init__(self, product_id, title, price, description, category, img_url, product_inventory, user_id):
-        self.product_id = product_id
+    def __init__(self, title, price, description, category, img_url, user_id):
         self.title = title
         self.price = price
         self.description = description
         self.category = category
         self.img_url = img_url
-        self.product_inventory = product_inventory
         self.user_id = user_id
 
     

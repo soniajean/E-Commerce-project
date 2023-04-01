@@ -9,9 +9,9 @@ def get_products(products):
         product = {
         'product_name' : data["title"],
         'price' : data["price"],
-        'product_description' : data["description"],
+        'description' : data["description"],
         'category': data["category"],
-        'product_image' : data["image"],
+        'product_image' : data["image"]
         }
         return product
     else:
