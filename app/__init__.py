@@ -6,7 +6,7 @@ from config import Config
 from .auth.routes import auth
 from .cart.routes import cart
 
-from .models import db, User
+from .models import db, User, Product
 from flask_migrate import Migrate
 from flask_login import LoginManager
 

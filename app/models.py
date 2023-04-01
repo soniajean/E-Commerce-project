@@ -35,15 +35,13 @@ class User(db.Model, UserMixin):
 
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    product_id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(100), nullable=False, unique=True )
     price = db.Column(db.String)
     description = db.Column(db.String)
     category = db.Column(db.String)
     img_url = db.Column(db.String)
     product_inventory = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-
     cart = db.relationship('User',
         secondary = 'cart',
         backref = 'carted',
@@ -70,12 +68,12 @@ class Product(db.Model):
     def deleteCarted(self, user):
         self.carted.delete(user)
         db.session.commit()
+        
+    def saveChanges(self):
+        db.session.commit()
 
     def saveProduct(self):
         db.session.add(self)
-        db.session.commit()
-
-    def saveChanges(self):
         db.session.commit()
 
     def deleteProduct(self):
