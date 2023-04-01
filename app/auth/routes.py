@@ -8,10 +8,6 @@ from ..models import User
 
 auth = Blueprint('auth', __name__, template_folder='auth_templates')
 
-@auth.route('/test')
-def login():
-    return render_template('test.html')
-
 
 @auth.route('/login', methods=['GET', 'POST'])
 def loginPage():
@@ -19,7 +15,7 @@ def loginPage():
     print(request.method)
     if request.method == 'POST':
          print(request.method)
-         if form.validat():
+         if form.validate():
               username = form.username.data
               password = form.password.data
               
@@ -28,15 +24,15 @@ def loginPage():
               if user:
                    if check_password_hash(user.password, password): # <-- NEW
                         # user.password == password: -- OLD way
-                        print('YAY, you\'re logged in!')
+                        print("YAY, you're logged in!")
                         login_user(user)
                         print(current_user)
                         print(current_user.username)
                         return redirect(url_for('homepage'))
                    else:
-                        flash('WRONG PASSWORD. . .', 'warning')
+                        flash("WRONG PASSWORD", "warning")
               else:
-                   flash('This isn\'t a user!', 'danger')
+                   flash("This isn't a user!", "danger")
               return redirect(url_for('auth.loginpage'))
     return render_template('login.html', form=form)
 
@@ -50,16 +46,16 @@ def registerPage():
                  email = form.email.data
                  password = form.password.data
                  if User.qery.filter_by(username=username).first():
-                      flash('That user name already exists, please try another!', 'warning')
+                      flash("That username already exists, please try another!", "warning")
                       return redirect(url_for('auth.registerPage'))
                  if User.query.filter.by(email=email).first():
-                      flash('that email has been used previously')
+                      flash("That email has been used previously")
                       return redirect(url_for('auth.registerPage'))
 
                  user = User(username, email, password)
                  user.saveUser()
 
-                 flash(f'Welcometo INSTURBlog {user,username}', 'success')
+                 flash(f"Welcome to Ghetto Amazon {user,username}!", "success")
                  return redirect(url_for('auth.loginpage'))
 
                    

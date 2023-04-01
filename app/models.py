@@ -6,8 +6,8 @@ db = SQLAlchemy()
 
 cart = db.Table(
     'cart',
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'), nullable=False),
-    db.Column('product_id', db.Integer, db.ForeignKey('product.id'), nullable=False)
+    db.Column('user_id', db.Integer, db.ForeignKey('user_id'), nullable=False),
+    db.Column('product_id', db.Integer, db.ForeignKey('product_id'), nullable=False)
 )
 
 # may need to change product_id name
@@ -42,8 +42,8 @@ class Product(db.Model):
     description = db.Column(db.String)
     category = db.Column(db.String)
     img_url = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    carted = db.relationship('User',
+    user_id = db.Column(db.Integer, db.ForeignKey('user_id'), nullable=False)
+    cart = db.relationship('User',
         secondary = 'cart',
         backref = 'carted',
         lazy = 'dynamic'
