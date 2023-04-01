@@ -1,40 +1,41 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='dora backpack.webp')}}" alt="logo" width="5%">
+    <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='dora backpack.webp')}}" alt="logo"
+        width="5%">
 
-    <a class="navbar-brand" href="#">BAMS</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
-        </li>
-        {% if current_user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link">{{current_user.username}}</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Shop Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{ url_for('cart.addToCart')}}">View Cart</a>
+      <a class="navbar-brand" href="#">BAMS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ url_for('autho.logOut')}}">Log Out</a>
-            {% endif %}
-
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link">Welcome {{current_user.username}}!</a>
+          </li>
+          <a class="btn btn-outline-primary justify-content-end" href="{{ url_for('auth.logOut') }}"
+          role="button">Logout</a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Shop Products</a>
+          </li>
+         
+          {%else%}
             <div class="justify-content-end">
               <a class="btn btn-outline-primary justify-content-end" href="{{ url_for('auth.loginPage') }}"
                 role="button">Login</a>
               <a class="btn btn-outline-primary justify-content-end" href="{{ url_for('auth.registerPage') }}"
                 role="button">Register</a>
             </div>
-        </li>
-      </ul>
-    </div>
+          </li>
+        </ul>
+      </div>
+      {% endif %}
   </div>
 </nav>
