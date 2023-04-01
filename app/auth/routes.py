@@ -28,12 +28,12 @@ def loginPage():
                         login_user(user)
                         print(current_user)
                         print(current_user.username)
-                        return redirect(url_for('homepage'))
+                        return redirect(url_for('homePage'))
                    else:
                         flash("WRONG PASSWORD", "warning")
               else:
                    flash("This isn't a user!", "danger")
-              return redirect(url_for('auth.loginpage'))
+              return redirect(url_for('auth.loginPage'))
     return render_template('login.html', form=form)
 
 
@@ -42,6 +42,8 @@ def registerPage():
      form = SignUpForm()
      if request.method == 'POST':
           if form.validate():
+               first_name = form.first_name.data
+               last_name = form.last_name.data
                username = form.username.data
                email = form.email.data
                password = form.password.data
@@ -51,10 +53,10 @@ def registerPage():
                if User.query.filter_by(email=email).first():
                     flash("That email has been used previously")
                     return redirect(url_for('auth.registerPage'))
-               user = User(username, email, password)
+               user = User(first_name, last_name, username, email, password)
                user.saveUser()
                flash(f"Welcome to Ghetto Amazon {user,username}!", "success")
-               return redirect(url_for('auth.loginpage'))                
+               return redirect(url_for('auth.loginPage'))                
      return render_template('register.html', form=form)
 
 @auth.route('/logout')
