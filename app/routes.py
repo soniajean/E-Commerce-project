@@ -26,27 +26,4 @@ def homePage():
 
     return render_template('index.html', users=users)
 
-@app.route('/register', methods=['GET', 'POST'])
-def registerPage():
-    form = SignUpForm()
-    print(request.method)
-    if request.method == 'POST':
-        if form.validate():
-            username = form.username.data
-            email = form.email.data
-            password = form.password.data
-            print(username, email, password)
-            user = User(username, email, password)
-            user.saveUser()
-            return redirect(url_for('loginPage'))
-    return render_template('register.html', form=form)
-11:53
-@app.route('/login', methods=['GET', 'POST'])
-def loginPage():
-    form = LoginForm()
-    if request.method == 'POST':
-        print()
-        if form.validate():
-            username = form.username.data
-            password = form.username.data
-            print(username, password)
+
