@@ -39,27 +39,23 @@ def loginPage():
 
 @auth.route('/register', methods=['GET', 'POST'])
 def registerPage():
-       form = SignUpForm()
-       if request.method == 'POST':
-            if form.validate():
-                 username = form.username.data
-                 email = form.email.data
-                 password = form.password.data
-                 if User.qery.filter_by(username=username).first():
-                      flash("That username already exists, please try another!", "warning")
-                      return redirect(url_for('auth.registerPage'))
-                 if User.query.filter.by(email=email).first():
-                      flash("That email has been used previously")
-                      return redirect(url_for('auth.registerPage'))
-
-                 user = User(username, email, password)
-                 user.saveUser()
-
-                 flash(f"Welcome to Ghetto Amazon {user,username}!", "success")
-                 return redirect(url_for('auth.loginpage'))
-
-                   
-       return render_template('register.html', form=form)
+     form = SignUpForm()
+     if request.method == 'POST':
+          if form.validate():
+               username = form.username.data
+               email = form.email.data
+               password = form.password.data
+               if User.query.filter_by(username=username).first():
+                    flash("That username already exists, please try another!", "warning")
+                    return redirect(url_for('auth.registerPage'))
+               if User.query.filter_by(email=email).first():
+                    flash("That email has been used previously")
+                    return redirect(url_for('auth.registerPage'))
+               user = User(username, email, password)
+               user.saveUser()
+               flash(f"Welcome to Ghetto Amazon {user,username}!", "success")
+               return redirect(url_for('auth.loginpage'))                
+     return render_template('register.html', form=form)
 
 @auth.route('/logout')
 def logOut():
