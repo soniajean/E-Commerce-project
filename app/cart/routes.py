@@ -17,3 +17,8 @@ def removeFromCart(product):
         current_user.removeFromCart(product)
 
     # return redirect(url_for('#'))
+
+@cart.route('view/<string:products')
+def viewAllProducts(product):
+    product = Product.product.all()
+    return render_template('all_product.html', product=product)
