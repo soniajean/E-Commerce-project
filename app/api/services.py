@@ -7,6 +7,7 @@ def get_products(products):
     if response.ok:
         data = response.json()
         product = {
+        'product_id' : data["id"],
         'product_name' : data["title"],
         'price' : data["price"],
         'description' : data["description"],

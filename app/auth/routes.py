@@ -55,7 +55,7 @@ def registerPage():
                     return redirect(url_for('auth.registerPage'))
                user = User(first_name, last_name, username, email, password)
                user.saveUser()
-               flash(f"Welcome to Ghetto Amazon {user,username}!", "success")
+               flash(f"Welcome to Ghetto Amazon {first_name.title()}!", "success")
                return redirect(url_for('auth.loginPage'))                
      return render_template('register.html', form=form)
 
