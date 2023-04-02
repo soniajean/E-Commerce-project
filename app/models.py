@@ -40,7 +40,7 @@ class Product(db.Model):
     description = db.Column(db.String)
     category = db.Column(db.String)
     img_url = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey('user_id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     carted = db.relationship('User',
         secondary = 'cart',
         backref = 'carted',
