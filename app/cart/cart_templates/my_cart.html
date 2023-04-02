@@ -10,8 +10,8 @@
         <p class="card-text">{{ p.price }}</p>
         <p class="card-text">{{ p.description }}</p>
         <p class="card-text">{{ p.category }}</p>
-        <a href="{{ url_for('cart.addToCart', product_id=p.id) }}" class="btn btn-primary">Add to cart!</a>
-        <a href="{{ url_for('cart.viewSingleProduct', product_id=p.id) }}" class="btn btn-outline-info">View Item</a>
+
+        <a href="{{ url_for('cart.removeFromCart', product_id=p.id) }}" class="btn btn-danger">Delete</a>
     </div>
 </div>
 {% endfor %}

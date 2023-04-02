@@ -15,11 +15,13 @@
           <a class="nav-link">Welcome {{current_user.first_name}}!</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-tags"></i> Shop Products</a>
+          <a class="nav-link" href="{{ url_for('cart.viewAllProducts') }}"><i class="fa-solid fa-tags"></i> Shop Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i> My Cart</a>
+          <a class="nav-link" href="{{ url_for('cart.viewMyCart') }}"><i class="fa-solid fa-cart-shopping"></i> My Cart</a>
         </li>
+        <a class="btn btn-outline-primary justify-content-end" href="{{ url_for('sendIt') }}"
+        role="button">DONT PRESS THIS BUTTON. ITS A FUNCITON TO ADD ITEMS TO DB</a>
         <a class="btn btn-outline-primary justify-content-end" href="{{ url_for('auth.logOut') }}"
           role="button">Logout</a>
       </ul>
