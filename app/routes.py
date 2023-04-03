@@ -10,3 +10,7 @@ from .models import User, Product
 @app.route('/')
 def homePage():
     return render_template('index.html')
+
+@app.route('/about-us')
+def aboutUs():
+    return render_template('aboutus.html')
