@@ -10,8 +10,7 @@
     <div class="card-body">
         <h5 class="card-title">{{ p.title }}</h5>
         <p class="card-text">{{ p.price }}</p>
-        <p class="card-text">{{ p.description }}</p>
-        <p class="card-text">{{ p.category }}</p>
+ 
         <a href="{{ url_for('cart.addToCart', product_id=p.id) }}" class="btn btn-dark">Add to Cart!</a>
         <a href="{{ url_for('cart.viewSingleProduct', product_id=p.id) }}" class="btn btn-outline-dark">View Item</a>
     </div>
