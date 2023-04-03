@@ -58,8 +58,8 @@ class Product(db.Model):
         self.carted.append(user)
         db.session.commit()
 
-    def deleteFromCart(self, user, product):
-        self.carted.remove(user, product)
+    def deleteFromCart(self, user):
+        self.carted.remove(user)
         db.session.commit()
         
     def saveChanges(self):
