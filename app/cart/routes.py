@@ -32,6 +32,10 @@ def removeFromCart(product_id):
 def removeAllFromCart():
     user_cart = current_user.carted
     print(user_cart)
+    for p in user_cart:
+        p.deleteFromCart(current_user)
+    
+    print(user_cart)
     return redirect(url_for('cart.viewMyCart'))
 
 @cart.route('/view-singe-item/<int:product_id>')
