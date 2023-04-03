@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>This will be the sign up or REGISTER page</h1>
-<div class="container">
+<h1>Register Here</h1>
+<br>
+<br>
+<img src="{{ url_for('static', filename='soloman.avif')}}" class="registerpic">
+
+<div class="container justify-content-center">
     <div class="row justify-content-center">
         <form method="POST" class="col-4">
             {{ form.hidden_tag() }}
@@ -12,7 +16,7 @@
             {{ form.email(class='form-control', placeholder='Email') }}
             {{ form.password(class='form-control', placeholder='Password') }}
             {{ form.confirm_password(class='form-control', placeholder='Confirm Password') }}
-            {{ form.submit(class='btn btn-primary', placeholder='Submit') }}
+            {{ form.submit(class='btn btn-dark', placeholder='Submit') }}
         </form>
      </div>
 </div>
