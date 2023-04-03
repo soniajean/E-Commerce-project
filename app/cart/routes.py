@@ -31,11 +31,12 @@ def removeFromCart(product_id):
 @cart.route('/remote-all')
 def removeAllFromCart():
     user_cart = current_user.carted
-    print(user_cart)
-    for p in user_cart:
-        p.deleteFromCart(current_user)
-    
-    print(user_cart)
+    while user_cart:
+        for i in user_cart:
+            if i in user_cart:   
+                i.deleteFromCart(current_user)
+        else:
+            break
     return redirect(url_for('cart.viewMyCart'))
 
 @cart.route('/view-singe-item/<int:product_id>')
