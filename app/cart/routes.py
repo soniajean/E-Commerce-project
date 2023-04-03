@@ -21,16 +21,6 @@ def addToCart(product_id):
     flash(f"{product_name} has been added!")
     return redirect(url_for('homePage'))
 
-@cart.route('/remove/<int:product_id>')
-def removeFromCart(product_id):
-    # product_search = Product.query.filter_by(product_id=Product.id).first()
-    # # search_product = (product_id-1)
-    # print(product_search)
-    # product = current_user.carted
-    # # print(product)
-    # product_search.deleteFromCart(current_user)
-    # return redirect(url_for('homePage'))    
-
 @cart.route('/view-singe-item/<int:product_id>')
 def viewSingleProduct(product_id):
     product = Product.query.get(product_id)
