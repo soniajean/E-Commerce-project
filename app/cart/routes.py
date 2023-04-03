@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, url_for, redirect, flash
 cart = Blueprint('cart', __name__, template_folder='cart_templates')
 from flask_login import current_user, login_required
-from app.models import User, Product
+from app.models import User, Product, db
 
 
 @cart.route('/my-cart')
@@ -30,13 +30,8 @@ def removeFromCart(product_id):
 
 @cart.route('/remote-all')
 def removeAllFromCart():
-    user_cart = current_user.carted
-    while user_cart:
-        for i in user_cart:
-            if i in user_cart:   
-                i.deleteFromCart(current_user)
-        else:
-            break
+    current_user.carted = []
+    db.session.commit()
     return redirect(url_for('cart.viewMyCart'))
 
 @cart.route('/view-singe-item/<int:product_id>')
