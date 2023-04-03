@@ -3,6 +3,7 @@ cart = Blueprint('cart', __name__, template_folder='cart_templates')
 from flask_login import current_user, login_required
 from app.models import User, Product
 
+
 @cart.route('/my-cart')
 def viewMyCart():
     products = current_user.carted
