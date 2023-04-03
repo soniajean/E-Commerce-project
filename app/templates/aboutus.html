@@ -1,28 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img src="{{ url_for('static', filename='soloman.jpeg')}}" class="registerpic">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">“We first started BAMS to complete an assignment. That is why we created this page.
-                    So we would not fail.
 
-                    During our journey, we discovered group projects are hard and so is looping through dictionaries
-                    with Flask.
+   
+ 
+<h1 class="producttitle">About BAMS</h1> 
+    <div class="card text-bg-dark">
+        <img src="{{ url_for('static', filename='soloman.jpeg')}}" class="aboutuspic">
 
-                    We strive to turn this in on time and hope you can see all the effort we put into this. </p>
-                <div class="justify-content-center">
-                    <a class="btn btn-outline-dark justify-content-center" href="{{ url_for('auth.loginPage') }}"
-                        role="button">Login</a>
-                    <a class="btn btn-outline-dark justify-content-center" href="{{ url_for('auth.registerPage') }}"
-                        role="button">Register</a>
-                </div>
-            </div>
+        <div class="card-img-overlay">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+<br>
+<br>
+          <p class="about-text">We first started BAMS to complete an assignment. <br><br>That is why we created this page.
+            So we would not fail.
+<br><br>
+            During our journey, we discovered group projects are hard and so is looping through dictionaries
+            with Flask.
+<br><br>
+            We strive to turn this in on time and hope you can see all the effort we put into this.</p>
+  
         </div>
-    </div>
-    {% endblock %}
+      </div>
+      {% endblock %}

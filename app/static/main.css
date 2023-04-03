@@ -59,3 +59,35 @@ body {
 
     margin: auto
 }
+
+.aboutuspic {
+    
+    width: auto
+}
+
+.aboutustitle {
+    font-family: "Brush Script MT", cursive; 
+    font-size: 100px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 200px;
+    color:white;
+    background-color: darkseagreen;
+
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+.about-text{
+    color: black;
+    font-size: xx-large;
+    align-items: center;
+    text-align: center;
+    background-color: whitesmoke;
+    opacity: .8
+}
+
+.navbar {
+    width: 100%;
+    align-items: center;
+}
