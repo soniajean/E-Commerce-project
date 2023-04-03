@@ -10,7 +10,6 @@ def viewMyCart():
     cart_total = 0
     for p in products:
         cart_total += (p.price)
-    print(products)
     return render_template('my_cart.html', products=products, total=cart_total)
 
 @cart.route('/add/<int:product_id>')
@@ -19,11 +18,25 @@ def addToCart(product_id):
     product.saveToCart(current_user)
     product_name=product.title
     flash(f"{product_name} has been added!")
-    return redirect(url_for('homePage'))
+    return redirect(url_for('cart.viewAllProducts'))
+
+@cart.route('/remove/<int:product_id>')
+def removeFromCart(product_id):
+    print(product_id)
+    product_search = Product.query.get(product_id)
+    print(product_search)
+    product_search.deleteFromCart(current_user)
+    return redirect(url_for('cart.viewMyCart'))   
+
+@cart.route('/remote-all')
+def removeAllFromCart():
+    user_cart = current_user.carted
+    print(user_cart)
+    return redirect(url_for('cart.viewMyCart'))
 
 @cart.route('/view-singe-item/<int:product_id>')
 def viewSingleProduct(product_id):
-    product = Product.query.get(product_id)
+    product = Product.query.filter_by(product_id=product_id).first()
     return render_template('single_product.html',product=product)
 
 @cart.route('/view-all-products')
