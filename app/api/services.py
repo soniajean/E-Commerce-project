@@ -18,4 +18,4 @@ def get_products(products):
     else:
         return None
 
-print(get_products(1))
+# print(get_products(1))
