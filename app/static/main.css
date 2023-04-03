@@ -3,9 +3,8 @@ body {
     height: 100vh;
     text-align: center;
     color: white;
-    
-    
-  
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 
 .index {
@@ -14,6 +13,38 @@ body {
     background: url("/static/couple backpacks.webp");
     background-size: cover;
     text-align: center;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Courier New', Courier, monospace
+}
 
-  }
+
+
+
+
+.registerpic {
+    width: 500px;
+    align-items: center;
+}
+
+.productcard {
+
+    margin: auto
+}
+
+.title { font-family: "Brush Script MT", cursive; 
+    font-size: 200px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 200px;
+}
+
+.producttitle { font-family: "Brush Script MT", cursive; 
+    font-size: 100px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 200px;
+    color:black
+}
+
+
