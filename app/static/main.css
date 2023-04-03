@@ -91,3 +91,9 @@ body {
     width: 100%;
     align-items: center;
 }
+
+#promopic{
+    align-items: center;
+    width: auto;
+    padding-right: 150px;
+}
