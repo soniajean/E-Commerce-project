@@ -30,9 +30,9 @@ def loginPage():
                         print(current_user.username)
                         return redirect(url_for('homePage'))
                    else:
-                        flash("WRONG PASSWORD", "warning")
+                        flash("Incorrect Password!", "warning")
               else:
-                   flash("This isn't a user!", "danger")
+                   flash("Username is Incorrect!", "danger")
               return redirect(url_for('auth.loginPage'))
     return render_template('login.html', form=form)
 
@@ -55,7 +55,7 @@ def registerPage():
                     return redirect(url_for('auth.registerPage'))
                user = User(first_name, last_name, username, email, password)
                user.saveUser()
-               flash(f"Welcome to Ghetto Amazon {first_name.title()}!", "success")
+               flash(f"Welcome, {first_name.title()}!", "success")
                return redirect(url_for('auth.loginPage'))                
      return render_template('register.html', form=form)
 
