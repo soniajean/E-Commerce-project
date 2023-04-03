@@ -11,11 +11,6 @@ from .models import User, Product
 def homePage():
     return render_template('index.html')
 
-
-@app.route('/sendit')
-def sendIt():
-    x = get_products(20)
-    print("ADDED TO DB")
-    p = Product(product_id=x['product_id'],title=x['product_name'],price=x['price'],description=x['description'],category=x['category'],img_url=x['product_image'])
-    p.saveProduct()
-    return render_template('index.html')
+@app.route('/about-us')
+def aboutUs():
+    return render_template('aboutus.html')

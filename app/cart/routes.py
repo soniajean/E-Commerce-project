@@ -6,8 +6,12 @@ from app.models import User, Product
 
 @cart.route('/my-cart')
 def viewMyCart():
-    products = my_cart.query.order_by(Product.product_id).all()
-    return render_template('my_cart.html', products=products)
+    products = current_user.carted
+    cart_total = 0
+    for p in products:
+        cart_total += (p.price)
+    print(products)
+    return render_template('my_cart.html', products=products, total=cart_total)
 
 @cart.route('/add/<int:product_id>')
 def addToCart(product_id):
@@ -15,14 +19,6 @@ def addToCart(product_id):
     product.saveToCart(current_user)
     product_name=product.title
     flash(f"{product_name} has been added!")
-    return redirect(url_for('homePage'))
-
-@cart.route('/remove/<int:product_id>')
-def removeFromCart(product_id):
-    product = cart.query.filter_by(product_id=product_id).first()
-    product.deleteFromCart(current_user)
-    product_name=product.title
-    flash(f"{product_name} has been Removed!")
     return redirect(url_for('homePage'))
 
 @cart.route('/view-singe-item/<int:product_id>')

@@ -2,6 +2,8 @@
 
 {% block content %}
 
+<h1>Cart Total: ${{total}} </h1>
+<a href="#" class="btn btn-outline-danger">Delete All</a>
 {% for p in products %}
 <div class="productcard" style="width: 18rem;">
     <a href="{{ url_for('cart.viewSingleProduct', product_id=p.id) }}"><img src="{{ p.img_url }}" class="card-img-top" alt="{{ p.title }}"></a></a>
@@ -10,8 +12,8 @@
         <p class="card-text">{{ p.price }}</p>
         <p class="card-text">{{ p.description }}</p>
         <p class="card-text">{{ p.category }}</p>
-
-        <a href="{{ url_for('cart.removeFromCart', product_id=p.id) }}" class="btn btn-danger">Delete</a>
+        <a href="{{products.id}}"></a>
+        <a href="" class="btn btn-danger">Delete</a>
     </div>
 </div>
 {% endfor %}
